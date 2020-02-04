@@ -44,7 +44,7 @@
 	  	</div>
 	</nav>
 
-	<form action="/purchase" method="POST">
+<!--	<form action="/purchase" method="POST">
 	<script
 	    src="https://checkout.razorpay.com/v1/checkout.js"
 	    data-key="rzp_test_6gkeHKqbrpJ1OY"
@@ -61,7 +61,25 @@
 	    data-theme.color="#F37254"
 	></script>
 	<input type="hidden" custom="Hidden Element" name="hidden">
-	</form>
+	</form> -->
+	
+	
+	<form method="POST" action="https://api.razorpay.com/v1/checkout/embedded">
+		<input type="hidden" name="key_id" value="rzp_test_6gkeHKqbrpJ1OY">
+		<input type="hidden" name="order_id" value="<%= orderId %>">
+		<input type="hidden" name="name" value="Acme Corp">
+		<input type="hidden" name="description" value="A Wild Sheep Chase">
+		<input type="hidden" name="image" value="https://cdn.razorpay.com/logos/BUVwvgaqVByGp2_large.png">
+		<input type="hidden" name="prefill[name]" value="Gaurav Kumar">
+		<input type="hidden" name="prefill[contact]" value="9123456780">
+		<input type="hidden" name="prefill[email]" value="gaurav.kumar@example.com">
+		<input type="hidden" name="notes[shipping address]" value="L-16, The Business Centre, 61 Wellfield Road, New Delhi - 110001">
+		<input type="hidden" name="callback_url" value="https://webhook.site/#!/11a02ea5-a3a0-4b1d-a63a-7d98f2543c4b/3e77a09f-ca5c-42ad-ad27-d0b619b4311d/1">
+	  <input type="hidden" name="cancel_url" value="https://example.com/payment-cancel">
+		<button>Submit</button>
+	  </form>
+	
+	
 <!-- 	<form method="POST" action="https://api.razorpay.com/v1/checkout/embedded">
 	  <input type="hidden" name="key_id" value="rzp_test_6gkeHKqbrpJ1OY">
 	  <input type="hidden" name="order_id" value="<%= orderId %>">
