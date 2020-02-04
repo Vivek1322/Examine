@@ -83,6 +83,42 @@ app.post('/purchase', (req,res) =>{
 });
 });
 
+
+// app.post('/payment', function(req, res){
+//     payment_id = req.body;
+//     if(payment_id.razorpay_payment_id){
+//         //MAY BE SUCCESS
+//         //CHECK FOR RAZORPAY_SIGNATURE
+//         if(checkSignature(payment_id.razorpay_order_id, payment_id.razorpay_signature)){
+//             instance.payments.fetch(payment_id.razorpay_payment_id, function(err, result){
+//                 if(err){
+//                     console.log(err);
+//                     req.flash('error', 'Internal Server Error');
+//                     res.redirect('/');
+//                 }
+//                 instance.payments.capture(payment_id.razorpay_payment_id, response.amount, function(err, result){
+//                     if(err){
+//                         console.log(err);
+//                         req.flash('error', 'Internal Server Error');
+//                         res.redirect('/');
+//                     }
+//                     res.redirect(`/success/?paymentId=${result.id}`);
+//                 });
+//             });
+//         }
+//         else{
+//             req.flash('error', 'FRAUD!!!');
+//             res.redirect('/');
+//         }
+//     }
+//     else{
+//         //FAILURE
+//     }
+// });
+
+
+
+
 app.get('/success', function(req, res){
     res.send(req.query.paymentId);
 });
