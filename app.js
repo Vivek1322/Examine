@@ -45,7 +45,24 @@ app.get('/', function(req, res){
 });
 
 app.get('/pay', function(req, res){
-	var options = {
+	  var options = {
+        amount: 50000,  // amount in the smallest currency unit
+        currency: "INR",
+        receipt: "order_rcptid_11",
+        payment_capture: '0'
+      };
+      instance.orders.create(options, function(err, order) {
+          if(err){
+              res.render('error')
+          }
+          else{
+            console.log(order);
+            res.render('pay', {orderId: order.id});
+          }
+        
+      });
+	
+/*	var options = {
 		amount: 5000,
 		currency: "INR"
         };
@@ -60,6 +77,9 @@ app.get('/pay', function(req, res){
             res.render('pay', {orderId: order.id});
         }
 	});
+	
+*/	
+	
 });
 
 
